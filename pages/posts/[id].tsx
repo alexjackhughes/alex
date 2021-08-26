@@ -3,6 +3,7 @@ import { getAllPostIds, getPostData } from "../../lib/posts";
 import Head from "next/head";
 import Date from "../../components/date";
 import { GetStaticProps, GetStaticPaths } from "next";
+import { calculateMinutesToRead } from "../../lib/postHelpers";
 
 export default function Post({
   postData,
@@ -18,10 +19,11 @@ export default function Post({
       <Head>
         <title>{postData.title}</title>
       </Head>
-      <article className="prose lg:prose-xl">
+      <article className="prose lg:prose-xl mx-auto">
         <h1>{postData.title}</h1>
         <div>
           <Date dateString={postData.date} />
+          <p>{calculateMinutesToRead(postData.contentHtml.length)}</p>
         </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>

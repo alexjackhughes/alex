@@ -1,9 +1,8 @@
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
+import { Navigation } from "./navigation";
 
-const name = "[Your Name]";
-export const siteTitle = "Next.js Sample Website";
+export const siteTitle = "Alex Hughes | CTO & Startup Founder";
 
 export default function Layout({
   children,
@@ -29,6 +28,7 @@ export default function Layout({
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+      <Navigation />
       <main>{children}</main>
       {!home && (
         <div>
