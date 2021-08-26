@@ -11,6 +11,7 @@ export default function Post({
   postData: {
     title: string;
     date: string;
+    tags: string[];
     contentHtml: string;
   };
 }) {
@@ -24,6 +25,11 @@ export default function Post({
         <div>
           <Date dateString={postData.date} />
           <p>{calculateMinutesToRead(postData.contentHtml.length)}</p>
+          <div>
+            {postData.tags.map((tag) => (
+              <p key={tag}>{tag}</p>
+            ))}
+          </div>
         </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
